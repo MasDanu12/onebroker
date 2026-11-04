@@ -1,0 +1,15 @@
+
+*.zip
+.env
+.env.*
+.grok
+.grok/
+.node_modules.lock
+.output
+.tanstack
+.tanstack/
+.vercel
+.vercel/
+dist
+node_modules
+node_modules/
