@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router"
 import { useState, type ReactNode } from "react"
 import { toast } from "sonner"
 import { ContohBanner } from "@/components/contoh"
@@ -66,7 +67,15 @@ export function DataPage() {
           <Baris key={p.id} judul={p.nama} sub={[p.telepon, p.alamat].filter(Boolean).join(" · ")} onClick={() => setPabrik(p)} />
         ))}
       </Blok>
-      <Blok title="Penjahit" onAdd={() => setPenjahit(null)}>
+      <Blok
+        title="Penjahit"
+        onAdd={() => setPenjahit(null)}
+        extra={
+          <Link to="/penjahit" className="inline-flex h-11 items-center rounded-xl border border-line bg-surface px-3 text-sm font-semibold">
+            Profil dan riwayat
+          </Link>
+        }
+      >
         {data.penjahit.map((p) => (
           <Baris key={p.id} judul={p.nama} sub={p.telepon} onClick={() => setPenjahit(p)} />
         ))}
@@ -137,14 +146,17 @@ export function DataPage() {
   )
 }
 
-function Blok({ title, onAdd, children }: { title: string; onAdd: () => void; children: ReactNode }) {
+function Blok({ title, onAdd, extra, children }: { title: string; onAdd: () => void; extra?: ReactNode; children: ReactNode }) {
   return (
     <section className="mb-4">
       <div className="mb-2 flex items-center justify-between">
         <h2 className="font-display text-2xl">{title}</h2>
-        <Button variant="outline" className="px-3" onClick={onAdd}>
-          Tambah
-        </Button>
+        <div className="flex gap-2">
+          {extra}
+          <Button variant="outline" className="px-3" onClick={onAdd}>
+            Tambah
+          </Button>
+        </div>
       </div>
       <ul className="flex flex-col gap-2">{children}</ul>
     </section>
