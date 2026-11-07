@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router"
-import { FileText, LayoutDashboard, Package, Scissors, Settings, Wallet } from "lucide-react"
+import { FileText, LayoutDashboard, Package, Scissors, Settings, Users, Wallet } from "lucide-react"
 import { useEffect, useState, type ReactNode } from "react"
 import { cn } from "@/components/ui"
 import { useBuku } from "@/lib/store"
@@ -78,6 +78,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           {NAV.map((item) => (
             <NavLink key={item.to} {...item} path={path} />
           ))}
+          <NavLink to="/penjahit" label="Penjahit" icon={Users} exact={false} path={path} />
           <NavLink to="/data" label="Data usaha" icon={Settings} exact={false} path={path} />
         </nav>
       </aside>

@@ -14,6 +14,7 @@ import { Route as DataRouteImport } from './routes/data'
 import { Route as KasRouteImport } from './routes/kas'
 import { Route as KerjaRouteImport } from './routes/kerja'
 import { Route as NotaRouteImport } from './routes/nota'
+import { Route as PenjahitRouteImport } from './routes/penjahit'
 import { Route as PotonganRouteImport } from './routes/potongan'
 import { Route as CetakAmbilIdRouteImport } from './routes/cetak.ambil.$id'
 import { Route as CetakSlipIdRouteImport } from './routes/cetak.slip.$id'
@@ -44,6 +45,11 @@ const NotaRoute = NotaRouteImport.update({
   path: '/nota',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PenjahitRoute = PenjahitRouteImport.update({
+  id: '/penjahit',
+  path: '/penjahit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PotonganRoute = PotonganRouteImport.update({
   id: '/potongan',
   path: '/potongan',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/kas': typeof KasRoute
   '/kerja': typeof KerjaRoute
   '/nota': typeof NotaRoute
+  '/penjahit': typeof PenjahitRoute
   '/potongan': typeof PotonganRoute
   '/cetak/ambil/$id': typeof CetakAmbilIdRoute
   '/cetak/slip/$id': typeof CetakSlipIdRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/kas': typeof KasRoute
   '/kerja': typeof KerjaRoute
   '/nota': typeof NotaRoute
+  '/penjahit': typeof PenjahitRoute
   '/potongan': typeof PotonganRoute
   '/cetak/ambil/$id': typeof CetakAmbilIdRoute
   '/cetak/slip/$id': typeof CetakSlipIdRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/kas': typeof KasRoute
   '/kerja': typeof KerjaRoute
   '/nota': typeof NotaRoute
+  '/penjahit': typeof PenjahitRoute
   '/potongan': typeof PotonganRoute
   '/cetak/ambil/$id': typeof CetakAmbilIdRoute
   '/cetak/slip/$id': typeof CetakSlipIdRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/kas'
     | '/kerja'
     | '/nota'
+    | '/penjahit'
     | '/potongan'
     | '/cetak/ambil/$id'
     | '/cetak/slip/$id'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/kas'
     | '/kerja'
     | '/nota'
+    | '/penjahit'
     | '/potongan'
     | '/cetak/ambil/$id'
     | '/cetak/slip/$id'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/kas'
     | '/kerja'
     | '/nota'
+    | '/penjahit'
     | '/potongan'
     | '/cetak/ambil/$id'
     | '/cetak/slip/$id'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   KasRoute: typeof KasRoute
   KerjaRoute: typeof KerjaRoute
   NotaRoute: typeof NotaRoute
+  PenjahitRoute: typeof PenjahitRoute
   PotonganRoute: typeof PotonganRoute
   CetakAmbilIdRoute: typeof CetakAmbilIdRoute
   CetakSlipIdRoute: typeof CetakSlipIdRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/penjahit': {
+      id: '/penjahit'
+      path: '/penjahit'
+      fullPath: '/penjahit'
+      preLoaderRoute: typeof PenjahitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/potongan': {
       id: '/potongan'
       path: '/potongan'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   KasRoute: KasRoute,
   KerjaRoute: KerjaRoute,
   NotaRoute: NotaRoute,
+  PenjahitRoute: PenjahitRoute,
   PotonganRoute: PotonganRoute,
   CetakAmbilIdRoute: CetakAmbilIdRoute,
   CetakSlipIdRoute: CetakSlipIdRoute,
